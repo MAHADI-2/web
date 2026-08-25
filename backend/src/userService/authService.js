@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt.js";
+import bcrypt from "bcryptjs";
 import UserModel from "../model/UserModel.js";
 import generateToken from "../utilitis/generateToken.js";
 import { sendEmail } from "../utilitis/Email/email.js";
