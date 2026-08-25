@@ -36,7 +36,7 @@ const Navbar = () => {
 
             {userInfo ? (
               <>
-                <li className={linkClass}><Link to="/order">Order</Link></li>
+                <li className={linkClass}><Link to="/orders">Order</Link></li>
                 <li className={linkClass}><Link to="/profile">{userInfo.name}</Link></li>
                 {userInfo.role === "admin" && (
                   <li className={linkClass}><Link to="/admin">Admin</Link></li>
@@ -76,7 +76,7 @@ const Navbar = () => {
 
             {userInfo ? (
               <>
-                <li><Link to="/order" className={mobileLinkClass} onClick={closeMenu}>Order</Link></li>
+                <li><Link to="/orders" className={mobileLinkClass} onClick={closeMenu}>Order</Link></li>
                 <li><Link to="/profile" className={mobileLinkClass} onClick={closeMenu}>{userInfo.name}</Link></li>
                 {userInfo.role === "admin" && (
                   <li><Link to="/admin" className={mobileLinkClass} onClick={closeMenu}>Admin</Link></li>
