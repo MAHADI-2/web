@@ -20,8 +20,8 @@ const loadProduct=async()=>{
 
 try {
     const {data}=await api.get("/products");
-    if(data.stutas==="fail"){
-        setError(error.response?.data?.message ||"product not yet added");
+    if(data.status === "fail"){
+      setError(data.error || "product not yet added");
     }else{
         setProducts(data.data || data);
     }
@@ -45,15 +45,13 @@ loadProduct();
 
         <>
       
-<div>
+<section id="products" className="scroll-mt-24 pt-6">
 
-    <h1 className="text-lg font-bold text-shadow-2xs text-center ">OUR PRODUCTS</h1>
+  <h1 className="text-lg font-bold text-shadow-2xs text-center">OUR PRODUCTS</h1>
 
 {loading && <p>Loading...</p>}
 {error && <p>{error}</p>}
 {!loading && !error && products.length===0 && <p>N</p>}
-
-</div>
 
 
 
@@ -98,7 +96,8 @@ loadProduct();
  
 
    
-</div>
+  </div>
+</section>
 
 
       </>  
