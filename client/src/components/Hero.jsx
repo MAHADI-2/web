@@ -2,11 +2,12 @@ import ParticleView from "./animition";
 
 const Hero = () => {
     return (
-        <div className="relative w-full h-[280px] sm:h-[340px] md:h-[400px]">
-           <img className="w-full h-full object-cover" src="https://png.pngtree.com/background/20231017/original/pngtree-office-essentials-technology-and-gadgets-illustration-featuring-laptop-printer-camera-tablet-picture-image_5591437.jpg" alt="hero" />
+        <section className="relative w-full h-[clamp(360px,calc(100svh-80px),560px)] overflow-hidden">
+           <img className="w-full h-full object-cover object-center" src="https://png.pngtree.com/background/20231017/original/pngtree-office-essentials-technology-and-gadgets-illustration-featuring-laptop-printer-camera-tablet-picture-image_5591437.jpg" alt="Featured electronics and gadgets" />
+           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-900/35 to-transparent" />
             
 
-<div className="absolute inset-0 flex flex-col justify-center items-center text-white mb-10">
+<div className="absolute inset-0 flex flex-col justify-center items-center px-6 text-center text-white">
 
 
 <ParticleView 
@@ -16,11 +17,11 @@ text="Welcome to Our Site"
 
 />
 
-<p className="text-1xl mt-2 text-white font-bold">Discover amazing things here</p>
+<p className="mt-2 text-base sm:text-lg text-white font-bold">Discover amazing things here</p>
 </div>
 
 
-        </div>
+        </section>
     );
 };
 
