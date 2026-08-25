@@ -22,7 +22,7 @@ const ProductDetails = () => {
 
   const loadProduct = async () => {
     try {
-      const { data } = await api.get("/products");
+     const { data } = await api.get("/api/v1/products");
       const list = data.data || data;
       const found = (Array.isArray(list) ? list : []).find((item) => item._id === id);
       setProduct(found || null);
