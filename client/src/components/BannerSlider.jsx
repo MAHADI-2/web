@@ -35,7 +35,7 @@ const BannerSlider = () => {
             <span className="text-yellow-400 font-semibold text-sm md:text-lg mb-2">মেগা ডিসকাউন্ট!</span>
             <h2 className="text-2xl md:text-4xl font-bold mb-3">লেটেস্ট টেকনোলজি ও ল্যাপটপ</h2>
             <p className="text-gray-200 text-xs md:text-sm max-w-md mb-4">আপনার পছন্দের গ্যাজেটটি কিনুন আকর্ষণীয় মূল্যে, সাথে রয়েছে দারুণ অফার।</p>
-            <Link to="/#products" className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium w-max transition">
+            <Link to="/?category=electronics#products" className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium w-max transition">
               শপিং করুন
             </Link>
           </div>
@@ -52,7 +52,7 @@ const BannerSlider = () => {
             <span className="text-yellow-400 font-semibold text-sm md:text-lg mb-2">বিশেষ অফার</span>
             <h2 className="text-2xl md:text-4xl font-bold mb-3">সেরা কালেকশন এখন আপনার হাতে</h2>
             <p className="text-gray-200 text-xs md:text-sm max-w-md mb-4">স্টাইলিশ ও প্রিমিয়াম প্রোডাক্টের বিশাল সমাহার।</p>
-            <Link to="/#products" className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium w-max transition">
+            <Link to="/?category=top-deals#products" className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium w-max transition">
               এখনই দেখুন
             </Link>
           </div>
@@ -69,7 +69,7 @@ const BannerSlider = () => {
             <span className="text-yellow-400 font-semibold text-sm md:text-lg mb-2">ফ্ল্যাশ সেল</span>
             <h2 className="text-2xl md:text-4xl font-bold mb-3">শীতকালীন ও ট্রেন্ডি ফ্যাশন</h2>
             <p className="text-gray-200 text-xs md:text-sm max-w-md mb-4">সেরা ব্র্যান্ডের পোশাক কিনুন ডিসকাউন্ট মূল্যে।</p>
-            <Link to="/#products" className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium w-max transition">
+            <Link to="/?category=fashion#products" className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium w-max transition">
               অর্ডার করুন
             </Link>
           </div>

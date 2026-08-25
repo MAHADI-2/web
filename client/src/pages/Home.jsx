@@ -5,10 +5,11 @@ import BannerSlider from "../components/BannerSlider";
 import { Link } from "react-router-dom";
 
 const shortcuts = [
-    { label: "Electronics", to: "/#products" },
-    { label: "Fashion", to: "/#products" },
-    { label: "Flash Sale", to: "/#products" },
-    { label: "Top Deals", to: "/#products" },
+    { label: "Flash Sale", to: "/?category=flash-sale#products" },
+    { label: "Electronics", to: "/?category=electronics#products" },
+    { label: "Fashion", to: "/?category=fashion#products" },
+    { label: "Home Appliances", to: "/?category=home-appliances#products" },
+    { label: "Top Deals", to: "/?category=top-deals#products" },
     { label: "Cart", to: "/cart" },
 ];
 

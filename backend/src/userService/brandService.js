@@ -96,7 +96,7 @@ export const updateCategoryService = async (id, reqBody) => {
 
 export const getProductService = async () => {
     try {
-      const result = await ProductModel.find();
+      const result = await ProductModel.find().populate("categoryID", "categoryName");
       return { status: "success", data: result };
     } catch (error) {
       return { status: "fail", error: error.message };
