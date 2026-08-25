@@ -17,12 +17,8 @@ const Home = () => {
 
 
     return (
-        <div>
-            <Layout>
-
-
-
-
+     <div>
+    <Layout>
 
 <Hero/>
 
