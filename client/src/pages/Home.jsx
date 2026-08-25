@@ -21,10 +21,12 @@ const Home = () => {
             <Layout>
 
 
-<BannerSlider/>
+
 
 
 <Hero/>
+
+<BannerSlider/>
 
 
 <ProductCard/>
