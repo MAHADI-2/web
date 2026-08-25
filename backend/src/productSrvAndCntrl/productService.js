@@ -1,4 +1,4 @@
-import ProductModel from "../model/productModel.js";
+import ProductModel from "../model/ProductModel.js";
 
 export const getProductService=async()=>{
 try {

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout.jsx";
 import { useAuth } from "../context/AuthContext";
 import api from "../api/axios";
-import React from 'react';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -15,14 +14,14 @@ const ProductDetails = () => {
   const [error, setError] = useState(null);
   const [qty, setQty] = useState(1);
   const [msg, setMsg] = useState("");
-  const [msgCart, setMsgCart] = useState("");
   const [reviewList, setReviewList] = useState([]);
   const [reviewdes, setReviewdes] = useState("");
   const [reviewReting, setReviewReting] = useState(5);
 
+
   const loadProduct = async () => {
     try {
-     const { data } = await api.get("/api/v1/products");
+     const { data } = await api.get("/products");
       const list = data.data || data;
       const found = (Array.isArray(list) ? list : []).find((item) => item._id === id);
       setProduct(found || null);
@@ -43,7 +42,6 @@ const ProductDetails = () => {
   const cartHandeler = async () => {
     if (!userInfo) return navigate("/login");
     await addToCart(product._id, qty);
-    setMsgCart("Added to cart");
     navigate("/cart");
   };
 
@@ -63,6 +61,7 @@ const ProductDetails = () => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadProduct();
     loadreview();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -72,7 +71,9 @@ const ProductDetails = () => {
     return (
       <Layout>
         <div className="flex justify-center items-center h-64">
-          <p className="text-gray-500 text-lg font-medium">Loading product details...</p>
+          <p className="text-gray-500 text-lg font-medium">
+            {error || "Loading product details..."}
+          </p>
         </div>
       </Layout>
     );
