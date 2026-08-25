@@ -15,6 +15,7 @@ const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null);
 const [searchParams] = useSearchParams();
 const selectedCategory = searchParams.get("category");
+const searchTerm = (searchParams.get("search") || "").trim().toLowerCase();
 
 useEffect(() => {
 
@@ -63,6 +64,8 @@ loadProduct();
     
 {products
   .filter((product) => {
+    const matchesSearch = !searchTerm || `${product.title} ${product.shortDes}`.toLowerCase().includes(searchTerm);
+    if (!matchesSearch) return false;
     if (!selectedCategory) return true;
     const categoryName = typeof product.categoryID === "object"
       ? product.categoryID.categoryName
@@ -76,12 +79,12 @@ loadProduct();
           const price = product.discount ? product.discountPrice : product.price;
 
           return (
-            <div key={product._id} className="bg-white px-2 py-4 rounded-sm shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer " >
+            <div key={product._id} className="min-w-0 overflow-hidden rounded-sm bg-white px-2 py-4 shadow-sm transition-all duration-300 hover:shadow-lg" >
                 
             <Link to={`/product/${product._id}`} >
                 
-                <img className="w-full h-40  object-cover rounded-md mb-3" src={product.image} alt={product.title} />
-                <h3 className="text-sm text-center font-semibold mb-2">{product.title}</h3>
+                <img className="mb-3 aspect-square w-full rounded-md object-cover" src={product.image} alt={product.title} />
+                <h3 className="truncate text-center text-sm font-semibold" title={product.title}>{product.title}</h3>
                 
 {product.discount ? (
   <>
@@ -97,6 +100,13 @@ loadProduct();
   ) : (
     <p className="text-sm ml-3">৳{price}</p>
   )}
+
+<div className="mt-2 flex items-center gap-1 px-2" aria-label={`${Number(product.rating || 0).toFixed(1)} out of 5 stars, ${product.reviewCount || 0} reviews`}>
+  <span className="text-sm tracking-wide text-amber-400" aria-hidden="true">
+    {"★".repeat(Math.round(product.rating || 0))}{"☆".repeat(5 - Math.round(product.rating || 0))}
+  </span>
+  <span className="text-xs text-slate-500">({product.reviewCount || 0})</span>
+</div>
 
 
 {product.stock === 0 && <p className="text-red-500">Out of stock</p>}

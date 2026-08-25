@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
+import { FiMenu, FiSearch, FiX } from "react-icons/fi";
 import { useAuth } from "../../context/AuthContext.jsx";
 
 const Navbar = () => {
   const { userInfo, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const linkClass =
     "text-white font-bold text-lg border-b-2 border-transparent hover:text-purple-600 hover:border-purple-600 transition-all duration-300";
@@ -14,9 +16,16 @@ const Navbar = () => {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const query = searchTerm.trim();
+    navigate(query ? `/?search=${encodeURIComponent(query)}#products` : "/#products");
+    closeMenu();
+  };
+
   return (
     <nav className="w-full bg-teal-500/90 py-4 px-6 md:px-8 backdrop-blur-sm shadow-lg sticky top-0 z-50">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex flex-wrap items-center justify-between gap-y-3">
         {/* logo brand div */}
         <div className="flex items-center gap-3">
           <img className="w-12 h-12" src="/assert/fca5660e08f83995574974aed9bacaa2.png" alt="logo" />
@@ -24,6 +33,25 @@ const Navbar = () => {
             <h1 className="text-xl md:text-2xl font-bold text-white tracking-wide">Fasion</h1>
           </Link>
         </div>
+
+        <form onSubmit={handleSearch} className="order-3 flex w-full min-w-0 md:order-none md:w-72 lg:w-96">
+          <label htmlFor="product-search" className="sr-only">Search products</label>
+          <input
+            id="product-search"
+            type="search"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            placeholder="Search products"
+            className="min-w-0 flex-1 rounded-l-md border-0 bg-white px-3 py-2 text-sm text-slate-800 outline-none ring-0 placeholder:text-slate-400"
+          />
+          <button
+            type="submit"
+            aria-label="Search products"
+            className="flex shrink-0 items-center justify-center rounded-r-md bg-amber-400 px-4 text-slate-900 transition hover:bg-amber-300"
+          >
+            <FiSearch aria-hidden="true" />
+          </button>
+        </form>
 
         {/* desktop menu */}
         <div className="hidden md:flex items-center gap-4">
